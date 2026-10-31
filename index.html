@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epicyclo — Awaken the Hidden Dial Inside Your Trackpad · Zero Permissions, Eyes-Free Control</title>
+  <meta name="description" content="Epicyclo · Awaken the hidden dial inside your trackpad. Three-finger spin: brightness on the left, volume on the right. Eyes on the screen, fingers on the pad. Zero permissions, eyes-free control. Effortless simplicity, unbroken focus.">
+  <link rel="icon" type="image/png" href="assets/appicon32.png">
+  <link rel="apple-touch-icon" href="assets/appicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Epicyclo — Awaken the Hidden Dial Inside Your Trackpad">
+  <meta property="og:description" content="Three-finger spin: brightness on the left, volume on the right. Eyes on the screen, fingers on the pad. Zero permissions, eyes-free control.">
+  <meta property="og:image" content="assets/appicon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Epicyclo — Awaken the Hidden Dial Inside Your Trackpad">
+  <meta name="twitter:description" content="Three-finger spin: brightness on the left, volume on the right. Eyes on the screen, fingers on the pad. Zero permissions, eyes-free control.">
+  <meta name="twitter:image" content="assets/appicon.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Smart language redirect for Chinese visitors
+    (function(){
+      try {
+        var pref = localStorage.getItem("epicyclo_preferred_lang");
+        if (!pref) {
+          var langs = navigator.languages || [navigator.language || ""];
+          var isZh = false;
+          for (var i = 0; i < langs.length; i++) {
+            if (langs[i] && langs[i].toLowerCase().indexOf("zh") === 0) {
+              isZh = true;
+              break;
+            }
+          }
+          if (isZh) {
+            window.location.replace("index_zh.html" + (window.location.hash || ""));
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav">
+      <a href="index.html" class="brand" aria-label="Epicyclo Homepage">
+        <img src="assets/appicon.png" alt="Epicyclo Logo" class="brand-icon">
+        <span>Epicyclo</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#matrix"><span class="n">01</span>Dual-Zone</a>
+        <a href="#vs"><span class="n">02</span>Comparison</a>
+        <a href="#privacy"><span class="n">03</span>Privacy</a>
+        <a href="#pricing"><span class="n">04</span>Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="index_zh.html" class="lang-btn" onclick="localStorage.setItem('epicyclo_preferred_lang', 'zh')" title="切换到中文">🌐 中文</a>
+        <a href="#download" class="nav-cta">Download Free</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text rv in">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>Ever felt like your Mac was missing a physical dial?</span>
+          </div>
+
+          <h1>
+            Awaken the Hidden Dial Inside Your Trackpad<br>
+            <span class="hero-subtitle">— Three-finger spin: brightness on the left, volume on the right. Eyes on the screen, fingers on the pad.</span></h1>
+
+          <div class="hero-actions" id="download">
+            <a href="https://github.com/benwu232/Epicyclo/releases/download/v1.0.6/Epicyclo_v1.0.6.dmg" class="btn btn-primary" id="heroDownloadBtn" download="" title="Direct download Epicyclo_v1.0.6.dmg" style="padding:0 36px;height:52px">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16"></path>
+              </svg>
+              <span>Download Free DMG</span>
+              <span class="mono" id="heroVersionTag" style="font-size:0.84em;opacity:0.85;margin-left:4px">(v1.0.6)</span>
+            </a>
+            <div class="hero-hw-req" role="note" aria-label="Hardware Requirements">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
+                <line x1="2" y1="15" x2="22" y2="15"></line>
+                <line x1="12" y1="15" x2="12" y2="20"></line>
+              </svg>
+              <span>Requires a <b>MacBook Trackpad</b> or <b>Apple Magic Trackpad</b> <span class="hw-os">· macOS 13+</span></span>
+            </div>
+          </div>
+
+          <div class="hero-trust-row">
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Notarized by Apple</span>
+            </span>
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero Permissions Required</span>
+            </span>
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+              <span>Indie Crafted · Built for Native Mac</span>
+            </span>
+          </div>
+
+          <div class="hero-brew-box">
+            <span class="brew-prompt">$</span>
+            <code class="brew-cmd" id="brewCmdText">brew install --cask benwu232/tap/epicyclo</code>
+            <button class="brew-copy-btn" id="copyBrewBtn" title="Copy to clipboard" aria-label="Copy Homebrew install command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyLabel">Copy</span>
+            </button>
+          </div>
+
+          <p class="hero-meta">
+            <span><b>Free Tier Forever</b> + 10 Daily Pro Animation Trials</span>
+            <span>Universal Binary · macOS 13+ · ~7.4 MB</span>
+            <span id="versionMeta" style="display:inline-flex;align-items:center;gap:4px">Latest: <b id="versionNumber" style="color:var(--cyan)">v1.0.6</b> · <a class="release-notes-link" href="https://github.com/benwu232/Epicyclo/releases" target="_blank" rel="noopener" style="text-decoration:underline">Release Notes</a></span>
+          </p>
+        </div>
+
+        <!-- Hero Stage: macOS Interactive Video Stage -->
+        <div class="hero-stage rv in">
+          <div class="trackpad-podium" id="trackpadPodium">
+            <div class="video-frame-bar">
+              <div class="mac-dots">
+                <span class="mac-dot red"></span>
+                <span class="mac-dot yellow"></span>
+                <span class="mac-dot green"></span>
+              </div>
+              <span class="video-frame-title">epicyclo_gesture_preview.mp4</span>
+              <span style="width:42px"></span>
+            </div>
+
+            <div class="video-frame-body">
+              <img src="assets/appicon.png" alt="Epicyclo" class="video-watermark-icon" aria-hidden="true">
+              <div class="video-play-btn" title="Demo Video Coming Soon" aria-label="Demo Video Coming Soon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </div>
+              <span class="video-frame-hint">Interactive Gesture Video Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 / DUAL-ZONE ROTARY -->
+  <section id="matrix">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">01 / DUAL-ZONE ROTARY</div>
+        <h2 class="sec-title">Dual Rotary Zones: Analog Feel, Pure Muscle Memory</h2>
+        <p class="sec-desc">
+          Break free from hunting for sliders or repetitive key taps. Turn your trackpad into a natural dial—brightness on the left, volume on the right. Eyes-free control powered by pure muscle memory.
+        </p>
+      </div>
+
+      <div class="steps-strip rv in">
+        <span class="step-chip"><span class="step-num">1</span>Rest three fingers left or right</span><span class="step-arrow" aria-hidden="true">→</span><span class="step-chip"><span class="step-num">2</span>Rotate clockwise or counter-clockwise</span>
+      </div>
+
+      <!-- Dual Showcase Cards -->
+      <div class="zone-dual-showcase rv in">
+        <!-- Card 1: Brightness -->
+        <div class="zone-photo-card">
+          <div class="zone-photo-wrap">
+            <img src="assets/guide_gesture_brightness.png" alt="Epicyclo three-finger gesture adjusting brightness on trackpad left side" loading="lazy">
+          </div>
+          <div class="zone-photo-body">
+            <span class="zone-photo-tag sun">☀️ Left Dial · Display Brightness</span>
+            <p>Rest three fingers on the left side of your trackpad and rotate naturally. Seamlessly controls your built-in MacBook screen as well as mainstream third-party external monitors.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Volume -->
+        <div class="zone-photo-card">
+          <div class="zone-photo-wrap">
+            <img src="assets/guide_gesture_volume.png" alt="Epicyclo three-finger gesture adjusting system volume on trackpad right side" loading="lazy">
+          </div>
+
+          <div class="zone-photo-body">
+            <span class="zone-photo-tag vol">🔊 Right Dial · System Volume</span>
+            <p>Rest three fingers on the right side and spin. Controls both internal MacBook speakers and external Bluetooth audio. Real-time responsiveness with native macOS sound feedback.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust & Guard Rail Bar -->
+      <div class="zone-trust-bar rv in">
+        <div class="zone-trust-item">
+          <span class="icon">✨</span>
+          <div>
+            <strong>Intelligent Gesture Isolation</strong>
+            <p>Fully compatible with macOS native Three-Finger Drag. Accidental dragging and selection are suppressed while turning, restoring instantly on release.</p>
+          </div>
+        </div>
+        <div class="zone-trust-item">
+          <span class="icon">🌌</span>
+          <div>
+            <strong>Meticulously Designed HUD Effects</strong>
+            <p>GPU hardware-accelerated animations with near-zero CPU footprint. Rich effects library continuously expanding.</p>
+          </div>
+        </div>
+        <div class="zone-trust-item">
+          <span class="icon">🍮</span>
+          <div>
+            <strong>Jelly Knob Elastic Feedback</strong>
+            <p>Instant, springy tactile feedback that moves with your fingertips. A delightful touch: the smoother your circle, the more fluid the response.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / INTERACTION COMPARISON -->
+  <section id="vs">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">02 / INTERACTION COMPARISON</div>
+        <h2 class="sec-title">From Keys and Sliders to One Dial</h2>
+        <p class="sec-desc">
+          Volume and brightness are continuous physical values naturally suited to rotary dials. Yet without native rotary gestures in macOS, we’ve long been trapped in repetitive key clicks and tiny slider hunting—clunky, inefficient, and disruptive to focus. Epicyclo brings intuitive rotary dial gestures directly to your trackpad: learn it in a minute, dial silky-smooth, and keep your creative flow unbroken.
+        </p>
+      </div>
+
+      <div class="comparison-table-wrapper rv in">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width:18%">Dimension</th>
+              <th style="width:26%">Keyboard Shortcuts<br><span style="font-weight:400;font-size:0.78rem;color:var(--ink-3)">Physical Fn Keys / Touch Bar</span></th>
+              <th style="width:26%">Menu Bar / Control Center<br><span style="font-weight:400;font-size:0.78rem;color:var(--ink-3)">Screen Slider UI</span></th>
+              <th class="col-highlight" style="width:30%">✨ Epicyclo Trackpad Rotary<br><span style="font-weight:400;font-size:0.78rem;color:var(--cyan)">Analog Rotary Dial</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="dim-title">Time to Adjust</div>
+                <div class="dim-sub">Speed &amp; Latency</div>
+              </td>
+              <td><span class="status-tag">🟡</span>Medium (1-2s: must lift hands to top keyboard row)</td>
+              <td><span class="status-tag">🔴</span>Slow (3-5s: find cursor → click icon → drag slider)</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>Instant (0.3s: turn fingers where they already rest)</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">Adjustment Mode</div>
+                <div class="dim-sub">Continuity &amp; Feel</div>
+              </td>
+              <td><span class="status-tag">🔴</span>Discrete jumps (repetitive tapping, tedious micro-adjustments)</td>
+              <td><span class="status-tag">🟡</span>Mouse drag (constrained by tiny pixel sliders)</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>Continuous Knob (analog rotary dynamics match volume &amp; light)</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">No-Look Operation</div>
+                <div class="dim-sub">Muscle Memory</div>
+              </td>
+              <td><span class="status-tag">🔴</span>Poor (short key travel, Touch Bar zero tactile feedback)</td>
+              <td><span class="status-tag">🔴</span>Impossible (eyes must aim at the narrow slider)</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>True Eyes-Free Control (100% muscle memory, zero gaze shift)</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">Focus Disruption</div>
+                <div class="dim-sub">Flow State</div>
+              </td>
+              <td><span class="status-tag">🟡</span>Eyes glance down at keyboard, breaking reading flow</td>
+              <td><span class="status-tag">🔴</span>Severe disruption; cursor leaves active workspace</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>Zero Flow Disruption (eyes remain fixed on your task)</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">External Display</div>
+                <div class="dim-sub">Hardware Control</div>
+              </td>
+              <td><span class="status-tag">🔴</span>macOS shortcuts cannot dim 3rd-party monitors</td>
+              <td><span class="status-tag">🔴</span>No unified hardware backlight control</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>Native DDC/CI Hardware Backlight Control (Pro)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 / USER PRIVACY -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">03 / USER PRIVACY</div>
+        <h2 class="sec-title">Runs 100% Locally, Zero Privacy Compromises</h2>
+        <p class="sec-desc">
+          We believe exceptional Mac utilities must exercise utmost restraint and transparency, never touching unnecessary data.
+        </p>
+      </div>
+
+      <div class="privacy-cards-grid rv in">
+        <div class="privacy-card">
+          <div class="privacy-card-icon">🛡️</div>
+          <h3>Zero Permissions Required</h3>
+          <p>Works right out of the box without granting any system permissions. Safe, secure, and private.</p>
+        </div>
+        <div class="privacy-card">
+          <div class="privacy-card-icon">🔒</div>
+          <h3>Anonymous Crash Reports Only</h3>
+          <p>We collect zero personal data aside from anonymous crash reports, used solely to identify and fix occasional software bugs. You can disable this anytime with one click in Preferences (Settings → General). <a href="privacy.html" class="privacy-link">View Full Privacy Policy →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / PRICING & LICENSING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">04 / PRICING &amp; LICENSING</div>
+        <h2 class="sec-title">Simple, Honest Pricing</h2>
+        <p class="sec-desc">
+          The Free tier keeps essential features forever, while the Premium tier unlocks advanced controls with a single lifetime purchase.
+        </p>
+      </div>
+
+      <div class="pricing-cards rv in">
+        <!-- Free Tier -->
+        <div class="price-card">
+          <div class="price-tier">Epicyclo Free</div>
+          <div class="price-desc">Essential features kept forever for high-frequency daily controls, ready right out of the box.</div>
+          <div class="price-val">$0 <span>/ Free Forever</span></div>
+
+          <ul class="price-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Full 14-day Pro trial included. Core dual rotary controls stay free forever.</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>3-finger dual-zone volume &amp; internal brightness control</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Classic Slide HUD animation with 50%–200% scaling</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero permissions required (no Accessibility or Input Monitoring)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>10 daily trials of all Pro HUD animations</span>
+            </li>
+          </ul>
+
+          <a href="#download" class="btn btn-secondary">Download Free</a>
+        </div>
+
+        <!-- Premium Lifetime -->
+        <div class="price-card featured">
+          <div class="featured-ribbon">Lifetime License</div>
+          <div class="price-tier">Epicyclo Premium</div>
+          <div class="price-desc">Crafted for Mac power users who demand the ultimate in aesthetics and customization.</div>
+          <div class="price-val"><span class="math-tip" tabindex="0">$6.18<span class="math-const">10/φ</span>
+              <span class="tip-box">φ = 1.618033... Golden Ratio · Geometric Aesthetic Constant</span>
+            </span>
+            <span>/ Lifetime License</span>
+          </div>
+          <div style="font-size:0.8rem;color:var(--ink-2);margin-top:6px;font-family:var(--font-mono)">One-time purchase · Lifetime access · Up to 3 Macs under your account</div>
+
+          <ul class="price-features" style="margin-top:22px">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Includes all Free features</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>External 3rd-Party Monitor</strong> DDC/CI hardware control</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Unlimited access</strong> to all meticulously designed HUD effects</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Free lifetime upgrades</strong> for all future animation styles and major versions</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Direct developer priority support &amp; feature voting</span>
+            </li>
+          </ul>
+
+          <a href="https://benwu232.lemonsqueezy.com/checkout/buy/b0cc2a02-a466-4e4f-be09-2d57956056a3" target="_blank" rel="noopener" class="btn btn-primary" id="buyPremiumBtn">
+            Upgrade to Premium Lifetime
+          </a>
+          <div class="price-guarantee">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span><a href="refund.html">14-day money-back guarantee</a> · Secure checkout via Lemon Squeezy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">FREQUENTLY ASKED QUESTIONS</div>
+        <h2 class="sec-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-box rv in">
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Why isn't Epicyclo available on the Mac App Store?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Apple’s Mac App Store sandbox strictly prohibits apps from accessing raw low-level trackpad multitouch event streams and communicating directly with external displays via the I2C / DDC-CI hardware bus (the exact same technical reason why tools like Raycast and Alfred distribute independently).<br><br>To achieve <b>custom rotary dial gesture algorithms</b> and <b>direct hardware backlight control</b>, Epicyclo is distributed directly via our website.<br><br>🛡️ <b>Security Guarantee</b>: Epicyclo embraces a minimalist security philosophy—it requires <b>zero system permissions</b> and collects <b>zero personal data aside from anonymous crash reports</b>. Furthermore, each build is <b>Apple Notarized</b> and Developer ID signed, installing cleanly through macOS Gatekeeper.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Will Epicyclo interfere with macOS native Three-Finger Drag?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><b>Not at all—they coexist seamlessly!</b> Epicyclo’s built-in algorithm automatically distinguishes between rotary dials and three-finger drags within milliseconds upon touch. Once locked, it stays securely engaged until your fingers lift.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Does Epicyclo require Accessibility (AX) or Input Monitoring permissions?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><strong>Absolutely not!</strong> This is a defining architectural advantage of Epicyclo. Built upon native trackpad events, it completely eliminates the need for sensitive Accessibility or Input Monitoring permissions. Safe, lightweight, and energy-efficient.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Does it work with an external Magic Trackpad?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Yes, seamlessly. Whether using an integrated MacBook trackpad or a standalone Apple Magic Trackpad over Bluetooth or USB-C, Epicyclo delivers the same real-time responsiveness on macOS 13 (Ventura) and above.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Why doesn't my external monitor brightness respond?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Most commercial displays (Dell, LG, Samsung, Philips, ASUS, etc.) support DDC/CI out of the box. Ensure "DDC/CI" is toggled ON in your monitor’s physical on-screen menu. Note that some unpowered USB-C adapters or hubs block I2C signals; connecting directly or via a DDC-compatible Thunderbolt dock is recommended.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>How many Macs can I activate on one license? How do I transfer?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Each Epicyclo Premium license covers <b>up to 3 Macs</b> under your personal ownership (e.g., an office MacBook, a home Mac mini, and a portable laptop).<br><br>When upgrading machines or reinstalling the OS, simply click "Deactivate" in Epicyclo’s settings on the old Mac, or reset device slots anytime through your Lemon Squeezy customer portal link sent upon purchase.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Does Epicyclo drain battery or consume CPU?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><b>Virtually zero drain, completely unnoticeable on battery life.</b><br>The dial remains completely idle most of the time with 0% CPU usage. Lightweight computations occur only during the brief milliseconds of three-finger rotation, while HUD animations are fully GPU hardware-accelerated. Since daily rotary tweaks take only about a second, battery consumption is imperceptible in practice.</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>How do I uninstall Epicyclo?</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Identical to any native macOS app: quit Epicyclo from the menu bar, then drag <b>Epicyclo.app</b> from Finder &gt; Applications directly into the Trash.<br>Epicyclo adheres to a clean architecture—it installs no background daemons, drivers, or kernel extensions, leaving zero clutter behind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="final-card rv in">
+        <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:18px">Effortless Simplicity, Unbroken Focus</h2>
+        <p class="sec-desc" style="max-width:600px;margin:0 auto 32px auto">
+          Leave tedious hunting behind and embrace pure muscle memory. Download Epicyclo free today and turn your trackpad into the most intuitive hardware dial on your Mac.
+        </p>
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+          <a href="https://github.com/benwu232/Epicyclo/releases/download/v1.0.6/Epicyclo_v1.0.6.dmg" class="btn btn-primary" style="height:54px;padding:0 34px" download="" title="Direct download Epicyclo_v1.0.6.dmg">
+            Download Free for Mac (.dmg)
+          </a>
+          <a href="https://benwu232.lemonsqueezy.com/checkout/buy/b0cc2a02-a466-4e4f-be09-2d57956056a3" target="_blank" rel="noopener" class="btn btn-secondary" style="height:54px">
+            Buy Lifetime License
+          </a>
+        </div>
+        <div style="margin-top:22px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap">
+          <span style="font-size:0.82rem;color:var(--ink);display:inline-flex;align-items:center;gap:6px;background:rgba(0,210,255,0.08);border:1px solid rgba(0,210,255,0.28);padding:4px 12px;border-radius:999px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--cyan)"><rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect><line x1="2" y1="15" x2="22" y2="15"></line><line x1="12" y1="15" x2="12" y2="20"></line></svg>
+            <span>Requires <b>MacBook</b> or <b>Apple Magic Trackpad</b> (macOS 13+)</span>
+          </span>
+          <span style="font-size:0.82rem;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Notarized by Apple · Developer ID Signed
+          </span>
+          <span style="font-size:0.82rem;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Zero Permissions Required
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <!-- SUPPORT & CONTACT STRIP -->
+      <div class="foot-contact rv in">
+        <div class="fc-card">
+          <div class="fc-icon">🐙</div>
+          <div class="fc-body">
+            <div class="fc-title">Bug Reports &amp; Feature Ideas</div>
+            <p class="fc-desc">Found an edge case or have a gesture suggestion? Open an issue and track progress publicly on GitHub.</p>
+          </div>
+          <a class="fc-btn" href="https://github.com/benwu232/Epicyclo/issues" target="_blank" rel="noopener">
+            GitHub Issues ↗
+          </a>
+        </div>
+        <div class="fc-card">
+          <div class="fc-icon">✉️</div>
+          <div class="fc-body">
+            <div class="fc-title">Direct Support &amp; Inquiries</div>
+            <p class="fc-desc">For volume licensing, order inquiries, press, or private assistance, drop us an email.</p>
+          </div>
+          <a class="fc-btn fc-btn-cyan" href="mailto:epicyclo232@gmail.com?subject=%5BEpicyclo%5D%20Support%20%26%20Inquiry">
+            epicyclo232@gmail.com ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-inner">
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="assets/appicon32.png" alt="Epicyclo" style="width:22px;height:22px;border-radius:5px">
+          <span style="font-family:var(--font-head);font-weight:700;color:#ffffff">Epicyclo</span>
+          <span>© 2026 Epicyclo. All rights reserved.</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="https://github.com/benwu232/Epicyclo/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          <a href="mailto:epicyclo232@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // =========================================================================
+    // 1. Dynamic GitHub Release DMG Sync (PhantomKnob-aligned with 30m Cache)
+    // =========================================================================
+    (function initReleaseDownload() {
+      var CACHE_KEY = "ep_latest_release_cache";
+      var CACHE_TIME_KEY = "ep_latest_release_time";
+      var CACHE_TTL = 30 * 60 * 1000; // 30 minutes cache
+
+      function applyReleaseData(data) {
+        if (!data || !data.tag_name) return;
+        var tagName = data.tag_name;
+        var dmgAsset = null;
+        if (data.assets && data.assets.length) {
+          for (var i = 0; i < data.assets.length; i++) {
+            var a = data.assets[i];
+            if (a.name && a.name.toLowerCase().endsWith(".dmg")) {
+              dmgAsset = a;
+              break;
+            }
+          }
+        }
+        var dmgUrl = dmgAsset ? dmgAsset.browser_download_url : null;
+
+        // 1. Replace all download links with direct DMG URL
+        var downloadBtns = document.querySelectorAll('a[href*="github.com/benwu232/epicyclo/releases"], a[href*="github.com/benwu232/Epicyclo/releases"]');
+        downloadBtns.forEach(function(btn) {
+          if (btn.classList.contains("release-notes-link")) return;
+          if (dmgUrl) {
+            btn.href = dmgUrl;
+            btn.setAttribute("download", "");
+            btn.setAttribute("title", "Direct download " + (dmgAsset.name || (tagName + " DMG")));
+          }
+        });
+
+        // 2. Update version tags and text
+        var heroVerTag = document.getElementById("heroVersionTag");
+        if (heroVerTag) {
+          heroVerTag.textContent = "(" + tagName + ")";
+        }
+        var verNum = document.getElementById("versionNumber");
+        if (verNum) {
+          verNum.textContent = tagName;
+        }
+        var verBadges = document.querySelectorAll(".ep-latest-version");
+        verBadges.forEach(function(el) {
+          el.textContent = tagName;
+        });
+      }
+
+      try {
+        var cached = localStorage.getItem(CACHE_KEY);
+        var cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+        var now = Date.now();
+        if (cached && cachedTime && (now - parseInt(cachedTime, 10)) < CACHE_TTL) {
+          applyReleaseData(JSON.parse(cached));
+          return;
+        }
+      } catch(e) {}
+
+      fetch("https://api.github.com/repos/benwu232/Epicyclo/releases/latest")
+        .then(function(res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+            localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+          } catch(e) {}
+          applyReleaseData(data);
+        })
+        .catch(function(err) {
+          console.warn("Using fallback releases link:", err);
+        });
+    })();
+
+    // =========================================================================
+    // 2. Copy Homebrew Command
+    // =========================================================================
+    var copyBtn = document.getElementById("copyBrewBtn");
+    var brewCmd = document.getElementById("brewCmdText");
+    var copyLabel = document.getElementById("copyLabel");
+    if (copyBtn && brewCmd) {
+      copyBtn.addEventListener("click", function() {
+        navigator.clipboard.writeText(brewCmd.innerText.trim()).then(function() {
+          copyLabel.innerText = "Copied!";
+          copyBtn.style.color = "var(--green)";
+          setTimeout(function() {
+            copyLabel.innerText = "Copy";
+            copyBtn.style.color = "";
+          }, 2000);
+        });
+      });
+    }
+
+    // =========================================================================
+    // 3. FAQ Accordion
+    // =========================================================================
+    document.querySelectorAll(".qa button").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var parent = this.parentElement;
+        var isOpen = parent.classList.contains("open");
+        document.querySelectorAll(".qa").forEach(function(item) {
+          item.classList.remove("open");
+          item.querySelector("button").setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          parent.classList.add("open");
+          this.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // =========================================================================
+    // 4. Scroll Reveal Observer (.rv)
+    // =========================================================================
+    (function initScrollReveal() {
+      if (!("IntersectionObserver" in window)) {
+        document.querySelectorAll(".rv").forEach(function(el) { el.classList.add("in"); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".rv").forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // =========================================================================
+    // 5. Non-Mac visitor detection & friendly prompt
+    // =========================================================================
+    (function initPlatformCheck() {
+      var isMac = /Macintosh|MacIntel|MacPPC|Mac68K/i.test(navigator.userAgent) && !/iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (!isMac) {
+        var dlBtns = document.querySelectorAll('#heroDownloadBtn, .final-card a.btn-primary');
+        dlBtns.forEach(function(btn) {
+          btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href);
+            alert("Epicyclo is crafted exclusively for macOS and requires a MacBook trackpad or Apple Magic Trackpad.\n\nWe have copied the website link to your clipboard—please open it on your Mac to download!");
+          });
+        });
+      }
+    })();
+  </script>
+
+
+</body>
+</html>

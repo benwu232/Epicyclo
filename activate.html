@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="doc-title">Activating Epicyclo Premium...</title>
+    <style>
+        body {
+            background-color: #050507;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            position: relative;
+        }
+        .lang-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        .lang-toggle-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .lang-toggle-btn:hover {
+            background: rgba(255, 159, 67, 0.15);
+            border-color: #ff9f43;
+            color: #ff9f43;
+        }
+        .container {
+            max-width: 440px;
+            width: 90%;
+            padding: 40px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(12px);
+            box-sizing: border-box;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+            animation: pulse-spin 6s infinite ease-in-out;
+        }
+        @keyframes pulse-spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ff9f43, #f39c12, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9f43, #f39c12);
+            color: #1a1a1a;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 159, 67, 0.3);
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #ffb366, #ff9f43);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 159, 67, 0.45);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .backup-box {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        .backup-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #ff9f43;
+            margin-bottom: 8px;
+        }
+        .code-snippet {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12px;
+            color: #00ffcc;
+            word-break: break-all;
+            user-select: all;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-note {
+            margin-top: 10px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-bar">
+        <button class="lang-toggle-btn" id="lang-toggle" onclick="toggleLanguage()">🌐 English</button>
+    </div>
+
+    <div class="container">
+        <!-- Epicyclo Circular Spiral SVG Logo -->
+        <svg class="logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="42" stroke="#ff9f43" stroke-width="3" stroke-opacity="0.3" />
+            <circle cx="50" cy="50" r="32" stroke="#ff9f43" stroke-width="4" stroke-dasharray="12 6" />
+            <circle cx="50" cy="50" r="20" stroke="#f39c12" stroke-width="3" />
+            <circle cx="50" cy="20" r="6" fill="#ff9f43" />
+            <circle cx="76" cy="65" r="4" fill="#f39c12" />
+            <circle cx="24" cy="65" r="4" fill="#e67e22" />
+        </svg>
+
+        <h1 id="status-title">Launching Epicyclo Activation...</h1>
+        <p id="status-desc">We are sending the activation signal to Epicyclo on your Mac. If the app does not open automatically, please click the button below.</p>
+
+        <a class="btn" id="activate-btn">Open &amp; Activate Epicyclo</a>
+
+        <div class="backup-box" id="backup-container">
+            <div class="backup-title" id="backup-title">Manual Backup License Key (Non-Mac devices or offline)</div>
+            <p id="backup-desc" style="font-size:11px; margin-bottom:8px;">If you purchased on mobile, copy this license key and enter it manually in the Mac app:</p>
+            <div class="code-snippet" id="key-display">Loading...</div>
+            <div class="footer-note">
+                <span id="email-label">Licensed Email:</span> <span id="email-display" style="color: #fff">...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const I18N = {
+            zh: {
+                docTitle: "正在激活 Epicyclo Premium...",
+                statusSuccess: "正在启动 Epicyclo 激活...",
+                descSuccess: "我们正在向您 Mac 上的 Epicyclo 发送激活信号。如果没有自动弹出激活界面，请点击下方按钮手动唤醒。",
+                btnOpen: "打开并激活 Epicyclo",
+                backupTitle: "手动备份授权码 (非 Mac 设备或离线备用)",
+                backupDesc: "如果您是在手机上购买的，可以复制此授权码前往 Mac 端 App 手动输入：",
+                emailLabel: "授权邮箱: ",
+                emailAutoLinked: "已通过授权码自动关联",
+                statusIncomplete: "激活参数不完整",
+                descIncomplete: "未检测到有效授权码。若您刚刚完成购买，请检查您的 Lemon Squeezy 订单确认邮件中的激活链接，或联系作者获取支持。",
+                noKey: "无有效授权码",
+                toggleBtn: "🌐 English"
+            },
+            en: {
+                docTitle: "Activating Epicyclo Premium...",
+                statusSuccess: "Launching Epicyclo Activation...",
+                descSuccess: "We are sending the activation signal to Epicyclo on your Mac. If the app does not open automatically, please click the button below.",
+                btnOpen: "Open & Activate Epicyclo",
+                backupTitle: "Manual Backup License Key (Non-Mac devices or offline)",
+                backupDesc: "If you purchased on mobile, copy this license key and enter it manually in the Mac app:",
+                emailLabel: "Licensed Email: ",
+                emailAutoLinked: "Automatically linked to license key",
+                statusIncomplete: "Incomplete Activation Parameters",
+                descIncomplete: "No valid license key found. If you recently completed your purchase, please check the activation link in your Lemon Squeezy email receipt, or contact support.",
+                noKey: "No valid license key found",
+                toggleBtn: "🌐 中文"
+            }
+        };
+
+        let currentLang = "en";
+        let hasValidKey = false;
+        let globalKey = "";
+        let globalEmail = "";
+
+        function detectLanguage() {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = (params.get('lang') || '').toLowerCase();
+            if (urlLang === 'zh' || urlLang === 'en') {
+                try {
+                    localStorage.setItem('epicyclo_preferred_lang', urlLang);
+                } catch(e) {}
+                return urlLang;
+            }
+
+            try {
+                const stored = localStorage.getItem('epicyclo_preferred_lang');
+                if (stored === 'zh' || stored === 'en') return stored;
+            } catch(e) {}
+
+            const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (nav.startsWith('zh')) return 'zh';
+
+            return 'en';
+        }
+
+        function render() {
+            const strings = I18N[currentLang] || I18N.en;
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-Hans' : 'en';
+            document.getElementById('doc-title').textContent = strings.docTitle;
+            document.getElementById('lang-toggle').textContent = strings.toggleBtn;
+
+            if (hasValidKey) {
+                document.getElementById('status-title').textContent = strings.statusSuccess;
+                document.getElementById('status-desc').innerHTML = strings.descSuccess;
+                document.getElementById('activate-btn').style.display = "inline-block";
+                document.getElementById('activate-btn').textContent = strings.btnOpen;
+                document.getElementById('backup-container').style.display = "block";
+                document.getElementById('backup-title').textContent = strings.backupTitle;
+                document.getElementById('backup-desc').textContent = strings.backupDesc;
+                document.getElementById('email-label').textContent = strings.emailLabel;
+                document.getElementById('email-display').textContent = globalEmail || strings.emailAutoLinked;
+                document.getElementById('key-display').textContent = globalKey;
+            } else {
+                document.getElementById('status-title').textContent = strings.statusIncomplete;
+                document.getElementById('status-desc').innerHTML = strings.descIncomplete;
+                document.getElementById('activate-btn').style.display = "none";
+                document.getElementById('backup-container').style.display = "none";
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            try {
+                localStorage.setItem('epicyclo_preferred_lang', currentLang);
+            } catch(e) {}
+            render();
+        }
+
+        function sanitizeParam(val) {
+            if (!val) return '';
+            const trimmed = val.trim();
+            if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
+                return '';
+            }
+            return trimmed;
+        }
+
+        window.onload = function() {
+            currentLang = detectLanguage();
+
+            const params = new URLSearchParams(window.location.search);
+            globalKey = sanitizeParam(params.get('key') || params.get('license_key') || params.get('license'));
+            globalEmail = sanitizeParam(params.get('email') || params.get('customer_email'));
+            hasValidKey = Boolean(globalKey && globalKey.trim().length > 0);
+
+            render();
+
+            if (hasValidKey) {
+                const schemeUrl = `epicyclo://activate?key=${encodeURIComponent(globalKey)}${globalEmail ? `&email=${encodeURIComponent(globalEmail)}` : ''}`;
+                const btn = document.getElementById('activate-btn');
+                btn.href = schemeUrl;
+                btn.onclick = function(e) {
+                    window.location.href = schemeUrl;
+                };
+
+                // Automatically try to wake the Mac App
+                setTimeout(() => {
+                    window.location.href = schemeUrl;
+                }, 800);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epicyclo — 唤醒沉睡在触控板里的旋钮。零系统权限，零视觉依赖</title>
+  <meta name="description" content="Epicyclo · 唤醒沉睡在触控板里的旋钮。三指轻旋：左调亮度，右控音量。目不离屏，指不离板。零系统权限，零视觉依赖。化繁为简，保持专注。">
+  <link rel="icon" type="image/png" href="assets/appicon32.png">
+  <link rel="apple-touch-icon" href="assets/appicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Epicyclo — 唤醒沉睡在触控板里的旋钮">
+  <meta property="og:description" content="三指轻旋：左调亮度，右控音量。目不离屏，指不离板。零系统权限，零视觉依赖。化繁为简，保持专注。">
+  <meta property="og:image" content="assets/appicon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Epicyclo — 唤醒沉睡在触控板里的旋钮">
+  <meta name="twitter:description" content="三指轻旋：左调亮度，右控音量。目不离屏，指不离板。零系统权限，零视觉依赖。化繁为简，保持专注。">
+  <meta name="twitter:image" content="assets/appicon.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // 记住用户语言偏好
+    localStorage.setItem("epicyclo_preferred_lang", "zh");
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav">
+      <a href="index_zh.html" class="brand" aria-label="Epicyclo 首页">
+        <img src="assets/appicon.png" alt="Epicyclo Logo" class="brand-icon">
+        <span>Epicyclo</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#matrix"><span class="n">01</span>双区旋钮</a>
+        <a href="#vs"><span class="n">02</span>交互对比</a>
+        <a href="#privacy"><span class="n">03</span>用户隐私</a>
+        <a href="#pricing"><span class="n">04</span>授权方案</a>
+        <a href="#faq">FAQ</a>
+        <a href="index.html" class="lang-btn" onclick="localStorage.setItem('epicyclo_preferred_lang', 'en')" title="Switch to English">🌐 English</a>
+        <a href="#download" class="nav-cta">免费下载</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text rv in">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>你不觉得，你的 Mac 一直少了一颗旋钮吗？</span>
+          </div>
+
+          <h1>
+            唤醒沉睡在触控板里的旋钮<br>
+            <span class="hero-subtitle">—— 三指轻旋：左调亮度，右控音量；目不离屏，指不离板。</span></h1>
+
+          <div class="hero-actions" id="download">
+            <a href="https://github.com/benwu232/Epicyclo/releases/download/v1.0.6/Epicyclo_v1.0.6.dmg" class="btn btn-primary" id="heroDownloadBtn" download="" title="直接下载 Epicyclo_v1.0.6.dmg" style="padding:0 36px;height:52px">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 19h16"></path>
+              </svg>
+              <span>免费下载 DMG</span>
+              <span class="mono" id="heroVersionTag" style="font-size:0.84em;opacity:0.85;margin-left:4px">(v1.0.6)</span>
+            </a>
+            <div class="hero-hw-req" role="note" aria-label="硬件需求">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect>
+                <line x1="2" y1="15" x2="22" y2="15"></line>
+                <line x1="12" y1="15" x2="12" y2="20"></line>
+              </svg>
+              <span>硬件要求：<b>MacBook 触控板</b> 或 <b>Mac 妙控板 (Trackpad)</b> <span class="hw-os">· macOS 13+</span></span>
+            </div>
+          </div>
+
+          <div class="hero-trust-row">
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>已通过 Apple 公证 (Notarized)</span>
+            </span>
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>0 辅助功能权限</span>
+            </span>
+            <span class="hero-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+              <span>独立开发者作品 · 专注 Mac 手势</span>
+            </span>
+          </div>
+
+          <div class="hero-brew-box">
+            <span class="brew-prompt">$</span>
+            <code class="brew-cmd" id="brewCmdText">brew install --cask benwu232/tap/epicyclo</code>
+            <button class="brew-copy-btn" id="copyBrewBtn" title="复制终端命令" aria-label="复制 Homebrew 安装命令">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyLabel">复制</span>
+            </button>
+          </div>
+
+          <p class="hero-meta">
+            <span><b>永久免费版可用</b> + 每日 10 次 Premium 动效体验</span>
+            <span>Universal 通用架构 · macOS 13+ · 约 7.4 MB</span>
+            <span id="versionMeta" style="display:inline-flex;align-items:center;gap:4px">最新发布：<b id="versionNumber" style="color:var(--cyan)">v1.0.6</b> · <a class="release-notes-link" href="https://github.com/benwu232/Epicyclo/releases" target="_blank" rel="noopener" style="text-decoration:underline">更新日志</a></span>
+          </p>
+        </div>
+
+        <!-- Hero Stage：macOS 交互视频演示视窗 -->
+        <div class="hero-stage rv in">
+          <div class="trackpad-podium" id="trackpadPodium">
+            <div class="video-frame-bar">
+              <div class="mac-dots">
+                <span class="mac-dot red"></span>
+                <span class="mac-dot yellow"></span>
+                <span class="mac-dot green"></span>
+              </div>
+              <span class="video-frame-title">epicyclo_gesture_preview.mp4</span>
+              <span style="width:42px"></span>
+            </div>
+
+            <div class="video-frame-body">
+              <img src="assets/appicon.png" alt="Epicyclo" class="video-watermark-icon" aria-hidden="true">
+              <div class="video-play-btn" title="演示视频即将上线" aria-label="演示视频即将上线">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </div>
+              <span class="video-frame-hint">实机手势演示视频即将上线</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 / DUAL-ZONE ROTARY -->
+  <section id="matrix">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">01 / DUAL-ZONE ROTARY</div>
+        <h2 class="sec-title">左右分区：旋钮直觉，肌肉记忆</h2>
+        <p class="sec-desc">
+          打破“先瞄准滑块再拖拽”或“低头摸索按键单步连按”的低效旧习惯。在触控板上实现自然的旋钮操作，左侧控光，右侧驭声，盲操随手可调。
+        </p>
+      </div>
+
+      <div class="steps-strip rv in">
+        <span class="step-chip"><span class="step-num">1</span>三指落在左侧或右侧</span><span class="step-arrow" aria-hidden="true">→</span><span class="step-chip"><span class="step-num">2</span>顺 / 逆时针旋转</span></div>
+
+      <!-- Dual Showcase Cards -->
+      <div class="zone-dual-showcase rv in">
+        <!-- Card 1: Brightness -->
+        <div class="zone-photo-card">
+          <div class="zone-photo-wrap">
+            <img src="assets/guide_gesture_brightness.png" alt="Epicyclo 触控板左侧调节屏幕与外接显示器亮度手势演示" loading="lazy">
+          </div>
+          <div class="zone-photo-body">
+            <span class="zone-photo-tag sun">☀️ 左侧 · 调节屏幕亮度</span><p>三指在触控板左侧自然旋转。不仅支持 MacBook 内置屏，更支持主流第三方外接显示器。</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Volume -->
+        <div class="zone-photo-card">
+          <div class="zone-photo-wrap">
+            <img src="assets/guide_gesture_volume.png" alt="Epicyclo 触控板右侧调节系统主音量手势演示" loading="lazy">
+          </div>
+
+          <div class="zone-photo-body">
+            <span class="zone-photo-tag vol">🔊 右侧 · 调节系统音量</span>
+            <p>三指在触控板右侧旋转。不仅支持MacBook内置音箱，也支持外置蓝牙音响。实时跟手，流畅响应，还有系统提示音实时反馈。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust & Guard Rail Bar -->
+      <div class="zone-trust-bar rv in">
+        <div class="zone-trust-item">
+          <span class="icon">✨</span>
+          <div>
+            <strong>智能手势隔离</strong>
+            <p>完美兼容 macOS 原生「三指拖移」。调控期间自动抑制误拖动，放手即刻恢复。</p>
+          </div>
+        </div>
+        <div class="zone-trust-item">
+          <span class="icon">🌌</span>
+          <div>
+            <strong>精心设计的 HUD 动画特效</strong>
+            <p>动画特效使用GPU加速，对CPU占用极小。特效库持续扩充中。</p>
+          </div>
+        </div>
+        <div class="zone-trust-item">
+          <span class="icon">🍮</span>
+          <div>
+            <strong>Jelly Knob 果冻旋钮反馈</strong>
+            <p>即时响应手指运动，提供富有弹性的跟随手感。更是一种趣味挑战与训练——手势画得越圆，操作效果越好。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / INTERACTION COMPARISON -->
+  <section id="vs">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">02 / INTERACTION COMPARISON</div>
+        <h2 class="sec-title">从按键、滑块到旋钮</h2>
+        <p class="sec-desc">
+          音量与亮度是连续的物理量，天然适用于旋钮操作，但受限于操作系统与原生手势的空白，我们一直被困在反复按键与滑块瞄准里，不仅繁锁低效，更会分散注意力，打断心流。Epicyclo 在触控板上实现旋钮手势，操作自然，一分钟上手，丝滑流畅，保持专注。</p>
+      </div>
+
+      <div class="comparison-table-wrapper rv in">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width:18%">对比维度</th>
+              <th style="width:26%">键盘快捷键<br><span style="font-weight:400;font-size:0.78rem;color:var(--ink-3)">F区实体按键 / Touch Bar</span></th>
+              <th style="width:26%">系统控制中心或第三方软件<br><span style="font-weight:400;font-size:0.78rem;color:var(--ink-3)">Screen Control Center</span></th>
+              <th class="col-highlight" style="width:30%">✨ Epicyclo 触控板旋钮<br><span style="font-weight:400;font-size:0.78rem;color:var(--cyan)">三指双区物理模拟旋钮</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="dim-title">调控速度</div>
+                <div class="dim-sub">Time to Adjust</div>
+              </td>
+              <td><span class="status-tag">🟡</span>中等（需抬手脱离触控板，耗时约 1~2 秒）</td>
+              <td><span class="status-tag">🔴</span>慢（耗时 3~5 秒：找光标→点菜单→拖滑块）</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>极快（0.3 秒：就地旋转即刻生效，无需寻找任何入口）</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">操作方式</div>
+                <div class="dim-sub">Adjustment Mode</div>
+              </td>
+              <td><span class="status-tag">🔴</span>离散跳跃（单指反复机械敲击，微调繁琐费力）</td>
+              <td><span class="status-tag">🟡</span>鼠标拖拽（受限于狭窄细小的界面滑块）</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>连续旋钮（物理量与旋转手势天然契合，丝滑流畅）</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">盲操能力</div>
+                <div class="dim-sub">No-Look Operation</div>
+              </td>
+              <td><span class="status-tag">🔴</span>差（F区键程短易按错，Touch Bar 零物理触感反馈）</td>
+              <td><span class="status-tag">🔴</span>完全无法盲操（视线必须跟随鼠标精准瞄准）</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>真·肌肉记忆盲操（无需看屏幕或触控板，随手一转即可）</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">心流与分心</div>
+                <div class="dim-sub">Focus Disruption</div>
+              </td>
+              <td><span class="status-tag">🟡</span>视线下移寻找键盘，打断阅读与编码思路</td>
+              <td><span class="status-tag">🔴</span>视线与光标双重偏离主任务，严重中断深度心流</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>视线无需离开主任务，注意力零中断</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="dim-title">外接显示器</div>
+                <div class="dim-sub">External Monitor</div>
+              </td>
+              <td><span class="status-tag">🔴</span>macOS 原生快捷键无法调节第三方外接显示器</td>
+              <td><span class="status-tag">🔴</span>系统控制中心无法统一控制外接硬件物理背光</td>
+              <td class="col-highlight"><span class="status-tag">🟢</span><strong>原生支持主流第三方外接屏 DDC/CI 硬件控光 (Pro)</strong></td></tr></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- 03 / USER PRIVACY -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">03 / USER PRIVACY</div>
+        <h2 class="sec-title">纯粹本地运行，隐私绝不妥协</h2>
+        <p class="sec-desc">
+          我们坚信优秀的 Mac 工具应当对系统保持最大的克制与透明，不触碰任何不必要的数据。
+        </p>
+      </div>
+
+      <div class="privacy-cards-grid rv in">
+        <div class="privacy-card">
+          <div class="privacy-card-icon">🛡️</div>
+          <h3>无需任何权限</h3>
+          <p>开箱即用，无需授予任何系统权限。安全放心，隐私无忧。</p>
+        </div>
+        <div class="privacy-card">
+          <div class="privacy-card-icon">🔒</div>
+          <h3>仅收集匿名崩溃报告</h3>
+          <p>不收集除匿名崩溃报告外的其他任何数据，仅用于定位与修复偶发软件缺陷。您可在设置（设置 → 通用）中随时一键关闭。<a href="privacy_zh.html" class="privacy-link">查看完整隐私政策 →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / PRICING & LICENSING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">04 / PRICING &amp; LICENSING</div>
+        <h2 class="sec-title">简单的付费模式</h2>
+        <p class="sec-desc">
+          免费版保留基础功能，付费版提供高级功能，且终身买断。
+        </p>
+      </div>
+
+      <div class="pricing-cards rv in">
+        <!-- Free Tier -->
+        <div class="price-card">
+          <div class="price-tier">Epicyclo 免费版</div>
+          <div class="price-desc">基础功能永久保留，满足日常高频调控，开箱即用。</div>
+          <div class="price-val">$0 <span>/ 永久免费</span></div>
+
+          <ul class="price-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>14天Premium全功能试用。试用期结束后以下基本功能仍然免费</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>三指双区盲操调节音量与内置屏幕亮度</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>经典平滑 HUD 动效与 50%~200% 缩放支持</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>0 系统权限依赖，不索要辅助功能与按键监听</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>每日享 10 次 Premium 炫酷动效试用</span>
+            </li>
+          </ul>
+
+          <a href="#download" class="btn btn-secondary">立即免费下载</a>
+        </div>
+
+        <!-- Premium Lifetime -->
+        <div class="price-card featured">
+          <div class="featured-ribbon">终身买断</div>
+          <div class="price-tier">Epicyclo Premium</div>
+          <div class="price-desc">为追求极致科技美学与个性化定制的 Mac 极客而生。</div>
+          <div class="price-val"><span class="math-tip" tabindex="0">$6.18<span class="math-const">10/φ</span>
+              <span class="tip-box">φ = 1.618033... 黄金分割比 · 几何美学常数</span>
+            </span>
+            <span>/ 终身授权</span>
+          </div>
+          <div style="font-size:0.8rem;color:var(--ink-2);margin-top:6px;font-family:var(--font-mono)">一次买断 · 终身使用 · 个人名下支持 3 台 Mac</div>
+
+          <ul class="price-features" style="margin-top:22px">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>包含免费版的全部能力</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>外接第三方显示器</strong> 硬件级 DDC/CI 直控</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>无限次解锁</strong> 全部精心设计的 HUD 动效</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>终身免费升级</strong>未来所有全新动效与后续大版本</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>开发者专属优先技术支持与功能建议投票权</span>
+            </li>
+          </ul>
+
+          <a href="https://benwu232.lemonsqueezy.com/checkout/buy/b0cc2a02-a466-4e4f-be09-2d57956056a3" target="_blank" rel="noopener" class="btn btn-primary" id="buyPremiumBtn">
+            立即升级 Premium 终身版
+          </a>
+          <div class="price-guarantee">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span><a href="refund_zh.html">14 天退款保证</a> · Lemon Squeezy 安全结算</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head center rv in">
+        <div class="sec-kicker">FREQUENTLY ASKED QUESTIONS</div>
+        <h2 class="sec-title">常见问题解答</h2>
+      </div>
+
+      <div class="faq-box rv in">
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>为什么 Epicyclo 没有在 Mac App Store 上架？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>苹果 Mac App Store 强制推行的“App 沙盒机制（App Sandbox）”，严格禁止任何第三方软件直接读取触控板多点触控的底层原始数据流，更禁止直接与外接显示器的底层总线（I2C / DDC-CI）进行硬件通信（这也是 Raycast、Alfred 等专业级 Mac 工具未能在 App Store 存在的硬性技术原因）。<br><br>为了实现<b>旋钮手势算法</b>与<b>真实硬件背光直调</b>，Epicyclo 采用官网独立分发。<br><br>🛡️ <b>安全保证</b>：Epicyclo 遵循极简安全哲学，<b>完全无需开启任何权限</b>，不收集除崩溃报告外的任何用户数据（）；同时已通过 <b>Apple 官方公证（Apple Notarized）</b> 与开发者签名，可通过 macOS Gatekeeper 正常安装，请放心下载。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>我平时开着 macOS 的「三指拖移」，会与 Epicyclo 冲突吗？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><b>完全不会，无缝共存！</b> Epicyclo 内置算法会自动区分“三指旋钮”和“三指拖移”，在检测到三个触点后在毫秒级迅速识别手势，一旦锁定，持续到手指抬起。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Epicyclo 需要开启辅助功能（Accessibility）权限吗？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><strong>完全不需要！</strong> 这是 Epicyclo 与其它同类软件最大的不同。Epicyclo 基于底层原生触控板事件驱动，完全无需开启可能危及隐私的“辅助功能”或“输入监控”权限，既安全、轻巧又省电。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>支持 Magic Trackpad 外接触控板吗？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>完美支持。无论是 MacBook 自带的触控板，还是桌面搭配的 Apple 妙控板（Magic Trackpad），只要系统为 macOS 13 (Ventura) 及以上版本均可无缝使用。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>为什么我的外接显示器调节亮度没有反应？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>大多数主流品牌的显示器（戴尔、LG、三星、飞利浦等）默认支持并通过 DDC/CI 协议通信。如果未生效，请检查显示器硬件 OSD 菜单中是否开启了“DDC/CI”选项。部分转接头或拓展坞可能会阻断 I2C 信号，建议直连或使用支持 DDC 的雷电拓展坞。</p>
+          </div>
+        </div>
+
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>一个授权码可以在几台 Mac 上使用？换电脑如何迁移？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>Epicyclo Premium 授权支持个人名下<b>最多 3 台 Mac</b> 同时激活使用（例如一台办公用 MacBook、一台家庭 Mac mini、一台随身笔记本）。<br><br>更换新电脑或重装系统时，只需在旧电脑的 Epicyclo 设置中点击「反激活（Deactivate）」，或通过购买凭证邮件中的 Lemon Squeezy 客户门户重置激活席位，即可在新设备上继续使用。</p>
+          </div>
+        </div>
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>Epicyclo 会消耗电量或占用 CPU 资源吗？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p><b>日常几乎零消耗，对电池续航完全无感知。</b><br>旋钮绝大部分时间处于静止待命状态，CPU 占用率为 0%；仅在三指旋转的瞬间进行毫秒级低开销计算，HUD 动效全程由 GPU 硬件加速渲染。因为日常调控一次仅耗时一秒左右，实际使用中完全感觉不到电量消耗。</p>
+          </div>
+        </div>
+        <div class="qa">
+          <button type="button" aria-expanded="false">
+            <span>如果不需要了，如何彻底卸载 Epicyclo？</span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="ans">
+            <p>与标准的 macOS 原生软件完全一致：在顶部菜单栏退出 Epicyclo，然后直接将「访达 &gt; 应用程序」中的 <b>Epicyclo.app</b> 拖入废纸篓即可。<br>Epicyclo 恪守纯粹架构，不安装任何后台常驻守护进程（Daemon）、不修改系统文件，干净无残留。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="final-card rv in">
+        <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:18px">化繁为简，优雅从容</h2>
+        <p class="sec-desc" style="max-width:600px;margin:0 auto 32px auto">
+          告别繁冗寻找，拥抱纯粹本能。免费下载 Epicyclo，让触控板成为你 Mac 上最顺手的硬件中枢。
+        </p>
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+          <a href="https://github.com/benwu232/Epicyclo/releases/download/v1.0.6/Epicyclo_v1.0.6.dmg" class="btn btn-primary" style="height:54px;padding:0 34px" download="" title="直接下载 Epicyclo_v1.0.6.dmg">
+            免费下载 macOS 版 (.dmg)
+          </a>
+          <a href="https://benwu232.lemonsqueezy.com/checkout/buy/b0cc2a02-a466-4e4f-be09-2d57956056a3" target="_blank" rel="noopener" class="btn btn-secondary" style="height:54px">
+            购买 Premium 终身授权
+          </a>
+        </div>
+        <div style="margin-top:22px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap">
+          <span style="font-size:0.82rem;color:var(--ink);display:inline-flex;align-items:center;gap:6px;background:rgba(0,210,255,0.08);border:1px solid rgba(0,210,255,0.28);padding:4px 12px;border-radius:999px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--cyan)"><rect x="2" y="4" width="20" height="16" rx="3" ry="3"></rect><line x1="2" y1="15" x2="22" y2="15"></line><line x1="12" y1="15" x2="12" y2="20"></line></svg>
+            <span>需配备 <b>MacBook</b> 或 <b>Mac Trackpad</b>（macOS 13+）</span>
+          </span>
+          <span style="font-size:0.82rem;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Apple 公证 · 开发者签名
+          </span>
+          <span style="font-size:0.82rem;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--green)"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            0 辅助功能权限门槛
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <!-- SUPPORT & CONTACT STRIP -->
+      <div class="foot-contact rv in">
+        <div class="fc-card">
+          <div class="fc-icon">🐙</div>
+          <div class="fc-body">
+            <div class="fc-title">缺陷反馈与功能构想</div>
+            <p class="fc-desc">遇到偶发异常或有创意交互构想？欢迎在 GitHub 公开提交讨论与追踪进展。</p>
+          </div>
+          <a class="fc-btn" href="https://github.com/benwu232/Epicyclo/issues" target="_blank" rel="noopener">
+            前往 GitHub Issues ↗
+          </a>
+        </div>
+        <div class="fc-card">
+          <div class="fc-icon">✉️</div>
+          <div class="fc-body">
+            <div class="fc-title">直接联系与商务支持</div>
+            <p class="fc-desc">用于订单查询、批量购买授权、媒体测评或私密技术支持咨询。</p>
+          </div>
+          <a class="fc-btn fc-btn-cyan" href="mailto:epicyclo232@gmail.com?subject=%5BEpicyclo%5D%20Support%20%26%20Inquiry">
+            epicyclo232@gmail.com ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-inner">
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="assets/appicon32.png" alt="Epicyclo" style="width:22px;height:22px;border-radius:5px">
+          <span style="font-family:var(--font-head);font-weight:700;color:#ffffff">Epicyclo</span>
+          <span>© 2026 Epicyclo. All rights reserved.</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="privacy_zh.html">隐私政策</a>
+          <a href="terms_zh.html">用户协议</a>
+          <a href="refund_zh.html">退款政策</a>
+          <a href="https://github.com/benwu232/Epicyclo/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          <a href="mailto:epicyclo232@gmail.com">联系支持</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // =========================================================================
+    // 1. GitHub Releases 最新版本与 DMG 动态同步 (30分钟 LocalStorage 缓存)
+    // =========================================================================
+    (function initReleaseDownload() {
+      var CACHE_KEY = "ep_latest_release_cache";
+      var CACHE_TIME_KEY = "ep_latest_release_time";
+      var CACHE_TTL = 30 * 60 * 1000; // 30 分钟缓存
+
+      function applyReleaseData(data) {
+        if (!data || !data.tag_name) return;
+        var tagName = data.tag_name;
+        var dmgAsset = null;
+        if (data.assets && data.assets.length) {
+          for (var i = 0; i < data.assets.length; i++) {
+            var a = data.assets[i];
+            if (a.name && a.name.toLowerCase().endsWith(".dmg")) {
+              dmgAsset = a;
+              break;
+            }
+          }
+        }
+        var dmgUrl = dmgAsset ? dmgAsset.browser_download_url : null;
+
+        // 1. 替换页面中所有下载按钮为最新直接下载链接
+        var downloadBtns = document.querySelectorAll('a[href*="github.com/benwu232/epicyclo/releases"], a[href*="github.com/benwu232/Epicyclo/releases"]');
+        downloadBtns.forEach(function(btn) {
+          if (btn.classList.contains("release-notes-link")) return;
+          if (dmgUrl) {
+            btn.href = dmgUrl;
+            btn.setAttribute("download", "");
+            btn.setAttribute("title", "直接下载 " + (dmgAsset.name || (tagName + " DMG")));
+          }
+        });
+
+        // 2. 更新版本标识文本
+        var heroVerTag = document.getElementById("heroVersionTag");
+        if (heroVerTag) {
+          heroVerTag.textContent = "(" + tagName + ")";
+        }
+        var verNum = document.getElementById("versionNumber");
+        if (verNum) {
+          verNum.textContent = tagName;
+        }
+        var verBadges = document.querySelectorAll(".ep-latest-version");
+        verBadges.forEach(function(el) {
+          el.textContent = tagName;
+        });
+      }
+
+      try {
+        var cached = localStorage.getItem(CACHE_KEY);
+        var cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+        var now = Date.now();
+        if (cached && cachedTime && (now - parseInt(cachedTime, 10)) < CACHE_TTL) {
+          applyReleaseData(JSON.parse(cached));
+          return;
+        }
+      } catch(e) {}
+
+      fetch("https://api.github.com/repos/benwu232/Epicyclo/releases/latest")
+        .then(function(res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+            localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+          } catch(e) {}
+          applyReleaseData(data);
+        })
+        .catch(function(err) {
+          console.warn("Using fallback releases link:", err);
+        });
+    })();
+
+    // =========================================================================
+    // 2. 复制 Homebrew 终端命令
+    // =========================================================================
+    var copyBtn = document.getElementById("copyBrewBtn");
+    var brewCmd = document.getElementById("brewCmdText");
+    var copyLabel = document.getElementById("copyLabel");
+    if (copyBtn && brewCmd) {
+      copyBtn.addEventListener("click", function() {
+        navigator.clipboard.writeText(brewCmd.innerText.trim()).then(function() {
+          copyLabel.innerText = "已复制!";
+          copyBtn.style.color = "var(--green)";
+          setTimeout(function() {
+            copyLabel.innerText = "复制";
+            copyBtn.style.color = "";
+          }, 2000);
+        });
+      });
+    }
+
+    // =========================================================================
+    // 3. FAQ 折叠面板
+    // =========================================================================
+    document.querySelectorAll(".qa button").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var parent = this.parentElement;
+        var isOpen = parent.classList.contains("open");
+        document.querySelectorAll(".qa").forEach(function(item) {
+          item.classList.remove("open");
+          item.querySelector("button").setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          parent.classList.add("open");
+          this.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // =========================================================================
+    // 4. 页面元素进入视口平滑浮现 (.rv)
+    // =========================================================================
+    (function initScrollReveal() {
+      if (!("IntersectionObserver" in window)) {
+        document.querySelectorAll(".rv").forEach(function(el) { el.classList.add("in"); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".rv").forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // =========================================================================
+    // 5. 非 Mac 访客设备友好拦截提示
+    // =========================================================================
+    (function initPlatformCheck() {
+      var isMac = /Macintosh|MacIntel|MacPPC|Mac68K/i.test(navigator.userAgent) && !/iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (!isMac) {
+        var dlBtns = document.querySelectorAll('#heroDownloadBtn, .final-card a.btn-primary');
+        dlBtns.forEach(function(btn) {
+          btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href);
+            alert("Epicyclo 专为 macOS 打造，需要配备 MacBook 触控板或 Apple 妙控板使用。\n\n已为您复制本站链接到剪贴板，请在 Mac 浏览器中打开下载体验！");
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+</body></html>
