@@ -123,19 +123,24 @@
                 <span class="mac-dot yellow"></span>
                 <span class="mac-dot green"></span>
               </div>
-              <span class="video-frame-title">epicyclo_gesture_preview.mp4</span>
+              <span class="video-frame-title">epicyclo_三指旋钮实机演示.mp4</span>
               <span style="width:42px"></span>
             </div>
 
-            <div class="video-frame-body">
-              <img src="assets/appicon.png" alt="Epicyclo" class="video-watermark-icon" aria-hidden="true">
-              <div class="video-play-btn" title="演示视频即将上线" aria-label="演示视频即将上线">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <div class="video-frame-body" id="videoContainer" role="button" tabindex="0" aria-label="点击播放实机演示" style="cursor:pointer">
+              <img src="assets/demo_thumbnail.jpg" alt="Epicyclo 触控板手势实机演示" class="video-thumbnail" loading="lazy">
+              <div class="video-overlay-tint"></div>
+              <div class="video-play-btn" title="播放演示视频" aria-label="播放演示视频">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="6 3 20 12 6 21 6 3"></polygon>
                 </svg>
               </div>
-              <span class="video-frame-hint">实机手势演示视频即将上线</span>
+              <span class="video-frame-hint">点击播放实机手势演示</span>
             </div>
+          </div>
+          <div class="video-network-note">
+            <span>▶️ 实机手势演示（YouTube） · 若视频加载受阻，可直接前往</span>
+            <a href="https://youtu.be/4AWLfFuUoUA" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline">YouTube 观看 ↗</a>
           </div>
         </div>
       </div>
@@ -714,6 +719,28 @@
           });
         });
       }
+    })();
+
+    // =========================================================================
+    // 6. Demo 视频门面点击就地加载 (Facade to YouTube iframe)
+    // =========================================================================
+    (function initVideoPlayer() {
+      var container = document.getElementById("videoContainer");
+      if (!container) return;
+      var hasLoaded = false;
+      function loadVideo() {
+        if (hasLoaded) return;
+        hasLoaded = true;
+        container.style.cursor = "default";
+        container.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/4AWLfFuUoUA?autoplay=1&mute=1&loop=1&playlist=4AWLfFuUoUA&playsinline=1&rel=0&modestbranding=1" title="Epicyclo 三指旋钮实机演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+      }
+      container.addEventListener("click", loadVideo);
+      container.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          loadVideo();
+        }
+      });
     })();
   </script>
 

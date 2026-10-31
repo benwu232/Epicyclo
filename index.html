@@ -141,19 +141,24 @@
                 <span class="mac-dot yellow"></span>
                 <span class="mac-dot green"></span>
               </div>
-              <span class="video-frame-title">epicyclo_gesture_preview.mp4</span>
+              <span class="video-frame-title">epicyclo_three_finger_dial_demo.mp4</span>
               <span style="width:42px"></span>
             </div>
 
-            <div class="video-frame-body">
-              <img src="assets/appicon.png" alt="Epicyclo" class="video-watermark-icon" aria-hidden="true">
-              <div class="video-play-btn" title="Demo Video Coming Soon" aria-label="Demo Video Coming Soon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <div class="video-frame-body" id="videoContainer" role="button" tabindex="0" aria-label="Click to play demo video" style="cursor:pointer">
+              <img src="assets/demo_thumbnail.jpg" alt="Epicyclo three-finger gesture demo in action" class="video-thumbnail" loading="lazy">
+              <div class="video-overlay-tint"></div>
+              <div class="video-play-btn" title="Play Demo Video" aria-label="Play Demo Video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="6 3 20 12 6 21 6 3"></polygon>
                 </svg>
               </div>
-              <span class="video-frame-hint">Interactive Gesture Video Coming Soon</span>
+              <span class="video-frame-hint">Click to Play Demo (1080p)</span>
             </div>
+          </div>
+          <div class="video-network-note">
+            <span>▶️ Three-finger gesture demo in action ·</span>
+            <a href="https://youtu.be/4AWLfFuUoUA" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline">Watch on YouTube ↗</a>
           </div>
         </div>
       </div>
@@ -741,6 +746,28 @@
           });
         });
       }
+    })();
+
+    // =========================================================================
+    // 6. Demo Video Facade Click-to-Play (YouTube No-Cookie Embed)
+    // =========================================================================
+    (function initVideoPlayer() {
+      var container = document.getElementById("videoContainer");
+      if (!container) return;
+      var hasLoaded = false;
+      function loadVideo() {
+        if (hasLoaded) return;
+        hasLoaded = true;
+        container.style.cursor = "default";
+        container.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/4AWLfFuUoUA?autoplay=1&mute=1&loop=1&playlist=4AWLfFuUoUA&playsinline=1&rel=0&modestbranding=1" title="Epicyclo Three-Finger Rotary Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+      }
+      container.addEventListener("click", loadVideo);
+      container.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          loadVideo();
+        }
+      });
     })();
   </script>
 
