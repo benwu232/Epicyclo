@@ -6,15 +6,15 @@
     <description>Most recent updates for Epicyclo.</description>
     <language>en</language>
     <item>
-      <title>Epicyclo v1.0.8</title>
-      <pubDate>Sun, 01 Nov 2026 22:33:54 +0000</pubDate>
-      <sparkle:version>116</sparkle:version>
-      <sparkle:shortVersionString>1.0.8</sparkle:shortVersionString>
-      <sparkle:releaseNotesLink>https://github.com/benwu232/epicyclo/releases/tag/v1.0.8</sparkle:releaseNotesLink>
-      <enclosure url="https://github.com/benwu232/epicyclo/releases/download/v1.0.8/Epicyclo_v1.0.8.dmg"
-                 sparkle:version="116"
-                 sparkle:shortVersionString="1.0.8"
-                 sparkle:edSignature="YPD1VarNiNUorwvXRHS1m1DeB8+PdT45VnpsFCEvElOH9+eyAqikhVI+r3ShgxS5XuWF55lb5vRCMJVgiCcOCQ==" length="8133714"
+      <title>Epicyclo v1.0.10</title>
+      <pubDate>Mon, 02 Nov 2026 08:44:22 +0000</pubDate>
+      <sparkle:version>118</sparkle:version>
+      <sparkle:shortVersionString>1.0.10</sparkle:shortVersionString>
+      <sparkle:releaseNotesLink>https://github.com/benwu232/epicyclo/releases/tag/v1.0.10</sparkle:releaseNotesLink>
+      <enclosure url="https://github.com/benwu232/epicyclo/releases/download/v1.0.10/Epicyclo_v1.0.10.dmg"
+                 sparkle:version="118"
+                 sparkle:shortVersionString="1.0.10"
+                 sparkle:edSignature="CE5iud1X41sIsXnDFSO9lotw25RUF+68j5t1b77K5QI2mieFDHzLh0TMVsW3f5qedlVnmtHVeI2NM/93hnHDCA==" length="8137739"
                  type="application/octet-stream" />
     </item>
   </channel>
