@@ -122,24 +122,52 @@
                 <span class="mac-dot yellow"></span>
                 <span class="mac-dot green"></span>
               </div>
-              <span class="video-frame-title">epicyclo_三指旋钮实机演示.mp4</span>
+              <span class="video-frame-title" id="videoFrameTitle">epicyclo_demo1.mp4</span>
               <span style="width:42px"></span>
             </div>
 
+            <!-- macOS 风格轮播切换 Tab 栏 -->
+            <div class="video-tabs-bar" role="tablist" aria-label="实机演示列表">
+              <button class="video-tab-btn active" data-index="0" role="tab" aria-selected="true" aria-controls="videoContainer">
+                <span class="video-tab-dot"></span>
+                <span class="video-tab-text">Demo 1</span>
+              </button>
+              <button class="video-tab-btn" data-index="1" role="tab" aria-selected="false" aria-controls="videoContainer">
+                <span class="video-tab-dot"></span>
+                <span class="video-tab-text">Demo 2</span>
+              </button>
+              <button class="video-tab-btn" data-index="2" role="tab" aria-selected="false" aria-controls="videoContainer">
+                <span class="video-tab-dot"></span>
+                <span class="video-tab-text">Demo 3</span>
+              </button>
+            </div>
+
             <div class="video-frame-body" id="videoContainer" role="button" tabindex="0" aria-label="点击播放实机演示" style="cursor:pointer">
-              <img src="assets/demo_thumbnail.jpg" alt="Epicyclo 触控板手势实机演示" class="video-thumbnail" loading="lazy">
+              <!-- 左右导航箭头 -->
+              <button class="video-nav-arrow prev" id="videoPrevBtn" title="上一个演示" aria-label="上一个演示" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="video-nav-arrow next" id="videoNextBtn" title="下一个演示" aria-label="下一个演示" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+
+              <img id="videoThumbnail" src="https://img.youtube.com/vi/4AWLfFuUoUA/hqdefault.jpg" alt="Epicyclo 触控板手势实机演示" class="video-thumbnail" loading="lazy" onerror="this.onerror=null;this.src='assets/demo_thumbnail.jpg';">
               <div class="video-overlay-tint"></div>
               <div class="video-play-btn" title="播放演示视频" aria-label="播放演示视频">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="6 3 20 12 6 21 6 3"></polygon>
                 </svg>
               </div>
-              <span class="video-frame-hint">点击播放实机手势演示</span>
+              <span class="video-frame-hint" id="videoFrameHint">点击播放实机手势演示</span>
             </div>
           </div>
           <div class="video-network-note">
             <span>▶️ 实机手势演示（YouTube） · 若视频加载受阻，可前往</span>
-            <a href="https://youtu.be/4AWLfFuUoUA" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline">YouTube 观看 ↗</a>
+            <a id="videoExternalLink" href="https://youtu.be/4AWLfFuUoUA" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline">YouTube 观看 ↗</a>
           </div>
         </div>
       </div>
@@ -721,25 +749,161 @@
     })();
 
     // =========================================================================
-    // 6. Demo 视频门面点击就地加载 (Facade to YouTube iframe)
+    // 6. Demo 视频门面轮播系统 (Multi-Demo Carousel with Facade & YouTube Embed)
     // =========================================================================
-    (function initVideoPlayer() {
+    (function initVideoCarousel() {
       var container = document.getElementById("videoContainer");
       if (!container) return;
-      var hasLoaded = false;
-      function loadVideo() {
-        if (hasLoaded) return;
-        hasLoaded = true;
-        container.style.cursor = "default";
-        container.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/4AWLfFuUoUA?autoplay=1&mute=1&loop=1&playlist=4AWLfFuUoUA&playsinline=1&rel=0&modestbranding=1" title="Epicyclo 三指旋钮实机演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+
+      var videos = [
+        {
+          id: "4AWLfFuUoUA",
+          title: "epicyclo_demo1.mp4",
+          thumb: "https://img.youtube.com/vi/4AWLfFuUoUA/hqdefault.jpg",
+          desc: "点击播放实机手势演示 · Demo 1",
+          alt: "Epicyclo 触控板手势实机演示 1"
+        },
+        {
+          id: "6qk6JdfmSPY",
+          title: "epicyclo_demo2.mp4",
+          thumb: "https://img.youtube.com/vi/6qk6JdfmSPY/hqdefault.jpg",
+          desc: "点击播放实机手势演示 · Demo 2",
+          alt: "Epicyclo 触控板手势实机演示 2"
+        },
+        {
+          id: "LIGHtcWG888",
+          title: "epicyclo_demo3.mp4",
+          thumb: "https://img.youtube.com/vi/LIGHtcWG888/hqdefault.jpg",
+          desc: "点击播放实机手势演示 · Demo 3",
+          alt: "Epicyclo 触控板手势实机演示 3"
+        }
+      ];
+
+      var currentIndex = 0;
+      var isPlaying = false;
+      var userInteracted = false;
+      var autoRotateTimer = null;
+
+      var titleEl = document.getElementById("videoFrameTitle");
+      var thumbEl = document.getElementById("videoThumbnail");
+      var hintEl = document.getElementById("videoFrameHint");
+      var externalLinkEl = document.getElementById("videoExternalLink");
+      var tabBtns = document.querySelectorAll(".video-tab-btn");
+      var prevBtn = document.getElementById("videoPrevBtn");
+      var nextBtn = document.getElementById("videoNextBtn");
+      var podium = document.getElementById("trackpadPodium");
+
+      function updateActiveUI(idx) {
+        currentIndex = idx;
+        var cur = videos[idx];
+
+        // 1. 更新顶部文件名与底部链接
+        if (titleEl) titleEl.textContent = cur.title;
+        if (externalLinkEl) externalLinkEl.href = "https://youtu.be/" + cur.id;
+
+        // 2. 更新 Tab 状态
+        tabBtns.forEach(function(btn, i) {
+          if (i === idx) {
+            btn.classList.add("active");
+            btn.setAttribute("aria-selected", "true");
+          } else {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-selected", "false");
+          }
+        });
+
+        // 3. 如果正在播放，直接无缝切到当前视频播放
+        if (isPlaying) {
+          container.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + cur.id + '?autoplay=1&mute=1&loop=1&playlist=' + cur.id + '&playsinline=1&rel=0&modestbranding=1" title="' + cur.title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+        } else {
+          // 4. 未播放状态：更新封面与文案
+          if (thumbEl) {
+            thumbEl.src = cur.thumb;
+            thumbEl.alt = cur.alt;
+          }
+          if (hintEl) {
+            hintEl.textContent = cur.desc;
+          }
+        }
       }
-      container.addEventListener("click", loadVideo);
+
+      function playCurrentVideo() {
+        isPlaying = true;
+        stopAutoRotate();
+        container.style.cursor = "default";
+        var cur = videos[currentIndex];
+        container.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + cur.id + '?autoplay=1&mute=1&loop=1&playlist=' + cur.id + '&playsinline=1&rel=0&modestbranding=1" title="' + cur.title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
+      }
+
+      function stopAutoRotate() {
+        userInteracted = true;
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+          autoRotateTimer = null;
+        }
+      }
+
+      function goToIndex(idx) {
+        var nextIdx = (idx + videos.length) % videos.length;
+        updateActiveUI(nextIdx);
+      }
+
+      // Tab 点击
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          stopAutoRotate();
+          var idx = parseInt(btn.getAttribute("data-index"), 10);
+          if (!isNaN(idx)) goToIndex(idx);
+        });
+      });
+
+      // 左右导航箭头
+      if (prevBtn) {
+        prevBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          stopAutoRotate();
+          goToIndex(currentIndex - 1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          stopAutoRotate();
+          goToIndex(currentIndex + 1);
+        });
+      }
+
+      // 点击播放（仅当未处于播放状态且未点击箭头/按钮时）
+      container.addEventListener("click", function(e) {
+        if (isPlaying) return;
+        if (e.target.closest(".video-nav-arrow") || e.target.closest(".video-tab-btn")) return;
+        playCurrentVideo();
+      });
+
       container.addEventListener("keydown", function(e) {
-        if (e.key === "Enter" || e.key === " ") {
+        if (!isPlaying && (e.key === "Enter" || e.key === " ")) {
           e.preventDefault();
-          loadVideo();
+          playCurrentVideo();
         }
       });
+
+      // 自动轮播：每 5 秒切换，鼠标悬停时暂停，用户产生任意互动后永久注销
+      var isHovered = false;
+      if (podium) {
+        podium.addEventListener("mouseenter", function() { isHovered = true; });
+        podium.addEventListener("mouseleave", function() { isHovered = false; });
+      }
+
+      autoRotateTimer = setInterval(function() {
+        if (userInteracted || isPlaying) {
+          clearInterval(autoRotateTimer);
+          return;
+        }
+        if (!isHovered) {
+          goToIndex(currentIndex + 1);
+        }
+      }, 5000);
     })();
   </script>
 
